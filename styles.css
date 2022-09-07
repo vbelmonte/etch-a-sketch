@@ -1,0 +1,7 @@
+#sketch-area {
+    display: grid;
+    grid-gap: 1px;
+    background-color: pink;
+    width: 700px;
+    height: 700px;
+}
