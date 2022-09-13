@@ -22,9 +22,46 @@ h1 {
     margin: 0;
 }
 
+h3 {
+    margin: 0px;
+}
+
+hr {
+    color: white;
+    opacity: 0.5;
+}
+
 button {
     border: solid white 1px;
+    border-radius: 4px;
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    width: 100%;
+}
+
+.btn-left, .btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.btn-icon {
+    height: 14px;
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(278deg) brightness(103%) contrast(101%);
+}
+
+.btn-normal {
+    padding: 10px 14px;
+}
+
+#pen-palette {
+    width: 35px;
+    height: 35px;
+    background-color: pink;
 }
 
 main {
@@ -34,6 +71,25 @@ main {
 .tools {
     background-color: #2F2F2F;
     padding: 30px;
+    width: 250px;
+}
+
+.tools-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 10px;  
+}
+
+.pen-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.pen-tools > div > div {
+    display: flex;
+    gap: 10px;
 }
 
 #sketch-area {
