@@ -49,10 +49,65 @@
                         </div>
                     </div>
                 </div>
+                <hr>
+                <div class="canvas-tools">
+                    <h3>Canvas Tools</h3>
+                    <div class="tools-container">
+                        <div>
+                            <button class="btn-palette">
+                                <div class="btn-left">
+                                    <img class="btn-icon" src="images-and-icons/paint-bucket.svg">Background Color
+                                </div>
+                                <div id="bg-palette"></div>
+                            </button>
+                        </div>
+                        <div>
+                            <button class="btn-normal">
+                                <div class="btn-container">
+                                    <img class="btn-icon" src="images-and-icons/grid-3x3.svg">Grid Line Color
+                                </div>
+                            </button>
+                        </div>
+                        <div class="grid-options">
+                            <div>
+                                <form>
+                                    <label for="grid-size">Grid Size</label>
+                                    <input type="text" id="grid-size" name="grid-size" placeholder="1-50">
+                                </form>
+                            </div>
+                            <div>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                  </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="clear-tools">
+                    <div class="tools-container">
+                        <div>
+                            <button class="btn-normal">
+                                <div class="btn-container">
+                                    <img class="btn-icon" src="images-and-icons/x-circle-fill.svg">Clear
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="sketch-area">
+            <div class="canvas-area">
+                <div id="sketch-area">
+                </div>
             </div>
         </main>
+        <footer>
+            <div>
+                <a href="https://github.com/vbelmonte/"><img class="footer-icon" src="images-and-icons/github-icon.svg"></a>
+                <p>Designed and developed by <a href="https://github.com/vbelmonte/">Villy Belmonte</a></p>
+            </div>
+        </footer>
     </body>
     <script src="index.js"></script>
 
