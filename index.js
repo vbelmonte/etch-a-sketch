@@ -1,6 +1,6 @@
 function createDiv(gridNumber) {
     let div = document.createElement("div");
-    div.style.background = "red";
+    div.style.background = "white";
     return div;
 }
 
@@ -19,3 +19,6 @@ function createGrid(gridNumber) {
     createGridBorder(gridNumber);
     document.getElementById("sketch-area").appendChild(toAdd);
 }
+
+
+createGrid(10);
