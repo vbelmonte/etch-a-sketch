@@ -11,7 +11,7 @@ body {
 header {
     background-color: #202020;
     text-align: center;
-    padding: 16px 0px;
+    padding: 1.5rem 0px;
 }
 
 a {
@@ -71,6 +71,7 @@ button {
 
 main {
     display: flex;
+    height: calc(100vh - calc(1.5rem*2 + 24px) - calc(70px + 1.7rem + 1.5rem));
 }
 
 .tools {
@@ -114,8 +115,11 @@ main {
 }
 
 .canvas-area {
-    background-color: #242424;
+    display: flex;
     flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: #242424;
 }
 
 #sketch-area {
@@ -129,7 +133,7 @@ main {
 footer {
     background-color: black;
     width: 100%;
-    padding: 25px 0px 20px 0px;
+    padding: 1.7rem 0px 1.5rem 0px;
     text-align: center;
 }
 
