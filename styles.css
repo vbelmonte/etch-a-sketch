@@ -45,6 +45,7 @@ button {
     padding: 0px;
     width: 100%;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 button:hover {
