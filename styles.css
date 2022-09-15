@@ -83,7 +83,7 @@ button:active {
 
 main {
     display: flex;
-    height: calc(100vh - calc(1.5rem*2 + 24px) - calc(70px + 1.7rem + 1.5rem));
+    min-height: calc(100vh - calc(1.5rem*2 + 24px) - calc(70px + 1.7rem + 1.5rem));
 }
 
 .tools {
