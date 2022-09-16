@@ -21,12 +21,14 @@
                     <h3>Pen Tools</h3>
                     <div class="tools-container">
                         <div>
-                            <button class="btn-palette">
+                            <label class="btn-palette" id="pen-color" role="button">
                                 <div class="btn-left">
                                     <img class="btn-icon" src="images-and-icons/brush-fill.svg">Pen Color
                                 </div>
-                                <div id="pen-palette"></div>
-                            </button>
+                                <div id="pen-palette">
+                                    <input type="color" class="color-picker" id="pen-color-picker" value="#0000ff">
+                                </div>
+                            </label>
                         </div>
                         <div>
                             <button class="btn-normal">
@@ -54,20 +56,24 @@
                     <h3>Canvas Tools</h3>
                     <div class="tools-container">
                         <div>
-                            <button class="btn-palette">
+                            <label class="btn-palette" id="bg-color" role="button">
                                 <div class="btn-left">
                                     <img class="btn-icon" src="images-and-icons/paint-bucket.svg">Background Color
                                 </div>
-                                <div id="bg-palette"></div>
-                            </button>
+                                <div id="bg-palette">
+                                    <input type="color" class="color-picker" id="bg-color-picker" value="#0000ff">
+                                </div>
+                            </label>
                         </div>
                         <div>
-                            <button class="btn-palette">
-                                <div class="btn-container">
-                                    <img class="btn-icon" src="images-and-icons/grid-3x3.svg">Grid Line Color
+                            <label class="btn-palette" id="gl-color" role="button">
+                                <div class="btn-left">
+                                    <img class="btn-icon" src="images-and-icons/paint-bucket.svg">Background Color
                                 </div>
-                                <div id="gl-palette"></div>
-                            </button>
+                                <div id="bg-palette">
+                                    <input type="color" class="color-picker" id=gl-color-picker" value="#0000ff">
+                                </div>
+                            </label>
                         </div>
                         <div class="grid-options">
                             <div>
