@@ -38,9 +38,9 @@ function getPenColor() {
     return penColorValue;
 }
 
-function assignPenColor(value) {
+/*function assignPenColor(value) {
     penColor.value = value;
-}
+}*/
 
 function getBackgroundColor() {
     bgColor.addEventListener("input", function() {
@@ -49,9 +49,9 @@ function getBackgroundColor() {
     return bgColorValue;
 }
 
-function assignBackgroundColor(value) {
+/*function assignBackgroundColor(value) {
     bgColor.value = value;
-}
+}*/
 
 function getGridLineColor() {
     glColor.addEventListener("input", function() {
@@ -60,8 +60,10 @@ function getGridLineColor() {
     return glColorValue;
 }
 
-function assignGridLineColor(value) {
-    glColor.value = value;
+function assignGridLineColor() {
+    glColor.addEventListener("input", function() {
+        document.getElementById("sketch-area").style.backgroundColor = glColor.value;
+    });
 }
 
 function toggleGridLines() {
@@ -74,3 +76,7 @@ function clearCanvas() {
 
 
 createGrid(10);
+assignGridLineColor()
+getBackgroundColor();
+getPenColor();
+getGridLineColor();
