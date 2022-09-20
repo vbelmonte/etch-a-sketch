@@ -4,6 +4,7 @@ let glColor = document.getElementById("gl-color-picker");
 let penColorValue = penColor.value;
 let bgColorValue = bgColor.value;
 let glColorValue = glColor.value;
+let gridSize = 10;
 
 function createDiv(gridNumber) {
     let div = document.createElement("div");
@@ -18,17 +19,30 @@ function createGridBorder(gridNumber) {
 function createGrid(gridNumber) {
     let toAdd = document.createDocumentFragment();
     let totalGridBlocks = gridNumber*gridNumber;
+    gridSize = gridNumber;
 
-    for (let i = 0; i < totalGridBlocks; i++) {
-        let test = createDiv(gridNumber);
-        toAdd.appendChild(test);
+    for (let i = 1; i <= totalGridBlocks; i++) {
+        let div = createDiv(gridNumber);
+        div.id = i;
+        toAdd.appendChild(div);
     }
     createGridBorder(gridNumber);
     document.getElementById("sketch-area").appendChild(toAdd);
 }
 
-function getGridSize() {
+function clearGrid() {
+    let canvas = document.getElementById("sketch-area");
+    let totalGridBlocks = getGridSize() * getGridSize();
+    
+    for (let i = 1; i <= totalGridBlocks; i++) {
+        const e = document.getElementById(i);
+        canvas.removeChild(e);
+    }
+    document.getElementById("sketch-area").style.gridTemplateColumns = "";
+}
 
+function getGridSize() {
+    return gridSize;
 }
 
 function getPenColor() {
@@ -71,6 +85,10 @@ function toggleGridLines() {
 }
 
 function clearCanvas() {
+
+}
+
+function addDivEventListener() {
 
 }
 
