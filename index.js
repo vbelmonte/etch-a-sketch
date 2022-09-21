@@ -4,7 +4,8 @@ let glColor = document.getElementById("gl-color-picker");
 let penColorValue = penColor.value;
 let bgColorValue = bgColor.value;
 let glColorValue = glColor.value;
-let gridSize = 10;
+let gridSize = document.getElementById("grid-size").value;
+let gridEntry = document.getElementById("grid-size");
 
 function createDiv(gridNumber) {
     let div = document.createElement("div");
@@ -43,6 +44,11 @@ function clearGrid() {
 
 function getGridSize() {
     return gridSize;
+}
+
+function setGrid(entry) {
+    clearGrid();
+    createGrid(entry);
 }
 
 function getPenColor() {
@@ -93,6 +99,14 @@ function addDivEventListener() {
 }
 
 
+gridEntry.addEventListener("change", function() {
+    setGrid(gridEntry.value);
+});
+gridEntry.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        setGrid(gridEntry.value);
+    }
+});
 createGrid(10);
 assignGridLineColor()
 getBackgroundColor();
