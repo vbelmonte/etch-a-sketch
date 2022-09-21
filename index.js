@@ -7,6 +7,9 @@ let glColorValue = glColor.value;
 let gridSize = document.getElementById("grid-size").value;
 let gridEntry = document.getElementById("grid-size");
 let toggleGrid = document.getElementById("grid-lines");
+let sketchArea = document.getElementById("sketch-area");
+let mouseDown = false;
+let mouseUp = true;
 
 function createDiv(gridNumber) {
     let div = document.createElement("div");
@@ -26,7 +29,11 @@ function createGrid(gridNumber) {
     for (let i = 1; i <= totalGridBlocks; i++) {
         let div = createDiv(gridNumber);
         div.id = i;
+        div.draggable = false;
         toAdd.appendChild(div);
+        addDivMouseDownListener(div);
+        addDivMouseUpListener(div);
+        addDivEventListener(div);
     }
     createGridBorder(gridNumber);
     document.getElementById("sketch-area").appendChild(toAdd);
@@ -95,9 +102,29 @@ function clearCanvas() {
 
 }
 
-function addDivEventListener() {
-
+function addDivEventListener(theDiv) {
+    theDiv.addEventListener(/*"mousemove"*/"pointermove", function() {
+        if (mouseDown) {
+            console.log("you clicked: div" + theDiv.id);
+            theDiv.style.backgroundColor = penColorValue;
+        }
+    });
 }
+
+function addDivMouseDownListener(theDiv) {
+    theDiv.addEventListener(/*'mousedown'*/"pointerdown", function(event) {
+        mouseDown = !mouseDown; // toggle mouseDown true/false;
+        event.preventDefault();
+    });
+}
+
+function addDivMouseUpListener(theDiv) {
+    theDiv.addEventListener(/*'mouseup'*/"pointerup", function(event) {
+        mouseDown = !mouseDown; // toggle mouseDown true/false;
+        event.stopPropagation();
+    });
+}
+
 
 
 gridEntry.addEventListener("change", function() {
@@ -117,8 +144,7 @@ toggleGrid.addEventListener("click", function() {
     else {
         document.getElementById("sketch-area").style.gap = "0px";
     }
-})
-
+});
 
 createGrid(10);
 assignGridLineColor()
