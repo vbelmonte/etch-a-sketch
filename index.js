@@ -6,6 +6,7 @@ let bgColorValue = bgColor.value;
 let glColorValue = glColor.value;
 let gridSize = document.getElementById("grid-size").value;
 let gridEntry = document.getElementById("grid-size");
+let toggleGrid = document.getElementById("grid-lines");
 
 function createDiv(gridNumber) {
     let div = document.createElement("div");
@@ -102,11 +103,23 @@ function addDivEventListener() {
 gridEntry.addEventListener("change", function() {
     setGrid(gridEntry.value);
 });
+
 gridEntry.addEventListener("keydown", function(e) {
     if (e.key === "Enter") {
         setGrid(gridEntry.value);
     }
 });
+
+toggleGrid.addEventListener("click", function() {
+    if (toggleGrid.checked === true) {
+        document.getElementById("sketch-area").style.gap = "1px";
+    }
+    else {
+        document.getElementById("sketch-area").style.gap = "0px";
+    }
+})
+
+
 createGrid(10);
 assignGridLineColor()
 getBackgroundColor();
