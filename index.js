@@ -8,6 +8,7 @@ let gridSize = document.getElementById("grid-size").value;
 let gridEntry = document.getElementById("grid-size");
 let toggleGrid = document.getElementById("grid-lines");
 let eraserTool = document.getElementById("eraser");
+let clearTool = document.getElementById("clear");
 let sketchArea = document.getElementById("sketch-area");
 let pressedButtons = document.getElementsByClassName("pressed");
 let mouseDown = false;
@@ -16,6 +17,8 @@ let mouseUp = true;
 function createDiv(gridNumber) {
     let div = document.createElement("div");
     div.style.background = "white";
+    div.className = "divCell";
+    div.draggable = false;
     return div;
 }
 
@@ -31,7 +34,6 @@ function createGrid(gridNumber) {
     for (let i = 1; i <= totalGridBlocks; i++) {
         let div = createDiv(gridNumber);
         div.id = i;
-        div.draggable = false;
         toAdd.appendChild(div);
         addDivMouseDownListener(div);
         addDivMouseUpListener(div);
@@ -104,7 +106,14 @@ function toggleGridLines() {
 }
 
 function clearCanvas() {
+    console.log("clear button clicked!");
+    let cells = document.getElementsByClassName("divCell");
+    let i = 0;
 
+    while (i < cells.length) {
+        cells[i].style.backgroundColor = "#FFFFFF";
+        i++;
+    }
 }
 
 
@@ -182,6 +191,7 @@ toggleGrid.addEventListener("click", function() {
 });
 
 eraserTool.addEventListener("click", erase);
+clearTool.addEventListener("click", clearCanvas);
 
 /*pressedButton();*/
 createGrid(10);
