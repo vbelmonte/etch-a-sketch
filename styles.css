@@ -100,6 +100,12 @@ button:active {
 
 }
 
+/*.pressedEffect {
+    background-color: rgba(255,255,255,0.6);
+    color: #2F2F2F;
+    filter: invert(15%) sepia(0%) saturate(1%) hue-rotate(324deg) brightness(88%) contrast(86%);
+}*/
+
 main {
     display: flex;
     min-height: calc(100vh - calc(1.5rem*2 + 24px) - calc(70px + 1.7rem + 1.5rem));

@@ -7,7 +7,9 @@ let glColorValue = glColor.value;
 let gridSize = document.getElementById("grid-size").value;
 let gridEntry = document.getElementById("grid-size");
 let toggleGrid = document.getElementById("grid-lines");
+let eraserTool = document.getElementById("eraser");
 let sketchArea = document.getElementById("sketch-area");
+let pressedButtons = document.getElementsByClassName("pressed");
 let mouseDown = false;
 let mouseUp = true;
 
@@ -102,6 +104,30 @@ function clearCanvas() {
 
 }
 
+
+/*function pressedButton() {
+    let i = 0;
+    while (i < pressedButtons.length) {
+        pressedButtons[i].addEventListener("click", addPressedButtonListener);
+        i++;
+    }
+}
+
+function addPressedButtonListener() {
+    if (this.classList.contains("pressedEffect")) {
+        this.classList.remove("pressedEffect");
+    }
+    else {
+        this.classList.add("pressedEffect");
+    }
+}*/
+
+function erase() {
+    console.log("erase tool selected");
+    penColorValue = "#FFFFFF";
+}
+
+
 function addDivEventListener(theDiv) {
     theDiv.addEventListener(/*"mousemove"*/"pointermove", function() {
         if (mouseDown) {
@@ -146,6 +172,9 @@ toggleGrid.addEventListener("click", function() {
     }
 });
 
+eraserTool.addEventListener("click", erase);
+
+/*pressedButton();*/
 createGrid(10);
 assignGridLineColor()
 getBackgroundColor();
