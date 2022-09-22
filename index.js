@@ -36,6 +36,7 @@ function createGrid(gridNumber) {
         addDivMouseDownListener(div);
         addDivMouseUpListener(div);
         addDivEventListener(div);
+        addDivClickListener(div);
     }
     createGridBorder(gridNumber);
     document.getElementById("sketch-area").appendChild(toAdd);
@@ -57,8 +58,10 @@ function getGridSize() {
 }
 
 function setGrid(entry) {
-    clearGrid();
-    createGrid(entry);
+    if (entry >= 1 && entry <= 50) {
+        clearGrid();
+        createGrid(entry);
+    }
 }
 
 function getPenColor() {
@@ -148,6 +151,12 @@ function addDivMouseUpListener(theDiv) {
     theDiv.addEventListener(/*'mouseup'*/"pointerup", function(event) {
         mouseDown = !mouseDown; // toggle mouseDown true/false;
         event.stopPropagation();
+    });
+}
+
+function addDivClickListener(theDiv) {
+    theDiv.addEventListener("click", function() {
+        theDiv.style.backgroundColor = penColorValue;
     });
 }
 
