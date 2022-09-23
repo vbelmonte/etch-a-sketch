@@ -105,6 +105,19 @@ function toggleGridLines() {
 
 }
 
+function setBackgroundColor() {
+    let cells = document.getElementsByClassName("divCell");
+    let i = 0;
+
+    bgColor.addEventListener("input", function() {
+        while (i < cells.length) {
+            cells[i].style.backgroundColor = bgColor.value;
+            i++;
+        }
+        i = 0;
+    });
+}
+
 function clearCanvas() {
     console.log("clear button clicked!");
     let cells = document.getElementsByClassName("divCell");
@@ -197,5 +210,6 @@ clearTool.addEventListener("click", clearCanvas);
 createGrid(10);
 assignGridLineColor()
 getBackgroundColor();
+setBackgroundColor();
 getPenColor();
 getGridLineColor();
