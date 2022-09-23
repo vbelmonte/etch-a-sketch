@@ -70,6 +70,9 @@ function getPenColor() {
     penColor.addEventListener("input", function() {
         penColorValue = penColor.value;
     });
+    penColor.addEventListener("click", function() {
+        penColorValue = penColor.value;
+    });
     return penColorValue;
 }
 
