@@ -25,7 +25,7 @@ let currentTool = "pen";
 
 function createDiv(gridNumber) {
     let div = document.createElement("div");
-    div.style.background = "white";
+    div.style.background = getBackgroundColor();
     div.className = "divCell";
     div.draggable = false;
     return div;
@@ -113,6 +113,10 @@ function assignGridLineColor() {
     });
 }
 
+function setInitialGridLineColor() {
+    document.getElementById("sketch-area").style.backgroundColor = getGridLineColor();
+}
+
 function toggleGridLines() {
 
 }
@@ -131,7 +135,6 @@ function setBackgroundColor() {
 }
 
 function clearCanvas() {
-    console.log("clear button clicked!");
     let cells = document.getElementsByClassName("divCell");
     let i = 0;
 
@@ -183,13 +186,11 @@ function addPressedButtonListener() {
 }
 
 function erase() {
-    console.log("erase tool selected");
     penColorValue = "#FFFFFF";
     assignCurrentTool("eraser");
 }
 
 function pen() {
-    console.log("pen tool selected");
     penColorValue = penColor.value;
     assignCurrentTool("pen");
 }
@@ -198,7 +199,7 @@ function pen() {
 function addDivEventListener(theDiv) {
     theDiv.addEventListener(/*"mousemove"*/"pointermove", function() {
         if (mouseDown) {
-            console.log("you clicked: div" + theDiv.id);
+            /*console.log("you clicked: div" + theDiv.id);*/
             if (getCurrentTool() === "pen") {
                 theDiv.style.backgroundColor = penColorValue;
             }
@@ -262,6 +263,7 @@ clearTool.addEventListener("click", clearCanvas);
 
 pressedButton();
 createGrid(10);
+setInitialGridLineColor();
 assignGridLineColor()
 getBackgroundColor();
 setBackgroundColor();
