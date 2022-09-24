@@ -20,7 +20,7 @@
                 <div class="pen-tools">
                     <h3>Pen Tools</h3>
                     <div class="tools-container">
-                        <div>
+                        <!-- <div>
                             <label class="btn-palette" id="pen-color" role="button">
                                 <div class="btn-left">
                                     <img class="btn-icon" src="images-and-icons/brush-fill.svg">Pen Color
@@ -29,6 +29,25 @@
                                     <input type="color" class="color-picker" id="pen-color-picker" value="#0000ff">
                                 </div>
                             </label>
+                        </div> -->
+                        <div>
+                            <div class="pen-tool-btns">
+                                <button class="btn-normal btn-icon-only pressed" id="eraser">
+                                    <div class="btn-container">
+                                        <img class="btn-icon" src="images-and-icons/eraser-fill.svg">
+                                    </div>
+                                </button>
+                                <button class="btn-normal btn-icon-only pressed pressedEffect" id="pen">
+                                    <div class="btn-container">
+                                        <img class="btn-icon" src="images-and-icons/brush-fill.svg">
+                                    </div>
+                                </button>
+                            </div>
+                            <div class="pen-tool-btns">
+                                <div id="pen-palette">
+                                    <input type="color" class="color-picker" id="pen-color-picker" value="#0000ff">
+                                </div>
+                            </div>
                         </div>
                         <div>
                             <button class="btn-normal">
@@ -42,13 +61,13 @@
                                 </div>
                             </button>
                         </div>
-                        <div>
+                        <!-- <div>
                             <button class="btn-normal" id="eraser">
                                 <div class="btn-container">
                                     <img class="btn-icon" src="images-and-icons/eraser-fill.svg">Erase
                                 </div>
                             </button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <hr>

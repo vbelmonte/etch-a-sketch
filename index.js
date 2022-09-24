@@ -1,3 +1,5 @@
+let penTool = document.getElementById("pen");
+let eraserTool = document.getElementById("eraser");
 let penColor = document.getElementById("pen-color-picker");
 let bgColor = document.getElementById("bg-color-picker");
 let glColor = document.getElementById("gl-color-picker");
@@ -7,12 +9,19 @@ let glColorValue = glColor.value;
 let gridSize = document.getElementById("grid-size").value;
 let gridEntry = document.getElementById("grid-size");
 let toggleGrid = document.getElementById("grid-lines");
-let eraserTool = document.getElementById("eraser");
 let clearTool = document.getElementById("clear");
 let sketchArea = document.getElementById("sketch-area");
 let pressedButtons = document.getElementsByClassName("pressed");
 let mouseDown = false;
 let mouseUp = true;
+let currentTool = "pen";
+
+
+/****************************
+*
+* GRID CREATOR FUNCTIONS
+*
+****************************/
 
 function createDiv(gridNumber) {
     let div = document.createElement("div");
@@ -133,10 +142,33 @@ function clearCanvas() {
 }
 
 
-/*function pressedButton() {
+
+/****************************
+*
+* TOOL SELECTION FUNCTIONS
+*
+****************************/
+
+function assignCurrentTool(tool) {
+    currentTool = tool;
+}
+
+function getCurrentTool() {
+    return currentTool;
+}
+
+function pressedButton() {
     let i = 0;
     while (i < pressedButtons.length) {
-        pressedButtons[i].addEventListener("click", addPressedButtonListener);
+        /*pressedButtons[i].addEventListener("click", addPressedButtonListener);*/
+        pressedButtons[i].addEventListener("click", function() {
+            let k = 0;
+            while (k < pressedButtons.length) {
+                pressedButtons[k].classList.remove("pressedEffect");
+                k++;
+            }
+            this.classList.add("pressedEffect");
+        });
         i++;
     }
 }
@@ -148,11 +180,18 @@ function addPressedButtonListener() {
     else {
         this.classList.add("pressedEffect");
     }
-}*/
+}
 
 function erase() {
     console.log("erase tool selected");
     penColorValue = "#FFFFFF";
+    assignCurrentTool("eraser");
+}
+
+function pen() {
+    console.log("pen tool selected");
+    penColorValue = penColor.value;
+    assignCurrentTool("pen");
 }
 
 
@@ -160,7 +199,12 @@ function addDivEventListener(theDiv) {
     theDiv.addEventListener(/*"mousemove"*/"pointermove", function() {
         if (mouseDown) {
             console.log("you clicked: div" + theDiv.id);
-            theDiv.style.backgroundColor = penColorValue;
+            if (getCurrentTool() === "pen") {
+                theDiv.style.backgroundColor = penColorValue;
+            }
+            else if (getCurrentTool() === "eraser") {
+                theDiv.style.backgroundColor = "#FFFFFF";
+            }
         }
     });
 }
@@ -181,7 +225,12 @@ function addDivMouseUpListener(theDiv) {
 
 function addDivClickListener(theDiv) {
     theDiv.addEventListener("click", function() {
-        theDiv.style.backgroundColor = penColorValue;
+        if (getCurrentTool() === "pen") {
+            theDiv.style.backgroundColor = penColorValue;
+        }
+        else if (getCurrentTool() === "eraser") {
+            theDiv.style.backgroundColor = "#FFFFFF";
+        }
     });
 }
 
@@ -206,10 +255,12 @@ toggleGrid.addEventListener("click", function() {
     }
 });
 
+
+penTool.addEventListener("click", pen);
 eraserTool.addEventListener("click", erase);
 clearTool.addEventListener("click", clearCanvas);
 
-/*pressedButton();*/
+pressedButton();
 createGrid(10);
 assignGridLineColor()
 getBackgroundColor();
