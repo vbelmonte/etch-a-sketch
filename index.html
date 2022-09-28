@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Etch-A-Pixel</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,7 @@
                 <div class="pen-tools">
                     <h3>Pen Tools</h3>
                     <div class="tools-container">
-                        <div>
+                        <!-- <div>
                             <label class="btn-palette" id="pen-color" role="button">
                                 <div class="btn-left">
                                     <img class="btn-icon" src="images-and-icons/brush-fill.svg">Pen Color
@@ -29,26 +29,45 @@
                                     <input type="color" class="color-picker" id="pen-color-picker" value="#0000ff">
                                 </div>
                             </label>
+                        </div> -->
+                        <div>
+                            <div class="pen-tool-btns">
+                                <button class="btn-normal btn-icon-only pressed" id="eraser">
+                                    <div class="btn-container">
+                                        <img class="btn-icon" src="images-and-icons/eraser-fill.svg">
+                                    </div>
+                                </button>
+                                <button class="btn-normal btn-icon-only pressed pressedEffect" id="pen">
+                                    <div class="btn-container">
+                                        <img class="btn-icon" src="images-and-icons/brush-fill.svg">
+                                    </div>
+                                </button>
+                            </div>
+                            <div class="pen-tool-btns">
+                                <div id="pen-palette">
+                                    <input type="color" class="color-picker" id="pen-color-picker" value="#0000ff">
+                                </div>
+                            </div>
                         </div>
                         <div>
-                            <button class="btn-normal">
+                            <button class="btn-normal pressed" id="lighten">
                                 <div class="btn-container">
                                     <img class="btn-icon" src="images-and-icons/sunrise-fill.svg">Lighten
                                 </div>
                             </button>
-                            <button class="btn-normal">
+                            <button class="btn-normal pressed" id="darken">
                                 <div class="btn-container">
                                     <img class="btn-icon" src="images-and-icons/sunset.svg">Darken
                                 </div>
                             </button>
                         </div>
-                        <div>
-                            <button class="btn-normal">
+                        <!-- <div>
+                            <button class="btn-normal" id="eraser">
                                 <div class="btn-container">
                                     <img class="btn-icon" src="images-and-icons/eraser-fill.svg">Erase
                                 </div>
                             </button>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <hr>
@@ -61,32 +80,32 @@
                                     <img class="btn-icon" src="images-and-icons/paint-bucket.svg">Background Color
                                 </div>
                                 <div id="bg-palette">
-                                    <input type="color" class="color-picker" id="bg-color-picker" value="#0000ff">
+                                    <input type="color" class="color-picker" id="bg-color-picker" value="#FFFFFF">
                                 </div>
                             </label>
                         </div>
                         <div>
                             <label class="btn-palette" id="gl-color" role="button">
                                 <div class="btn-left">
-                                    <img class="btn-icon" src="images-and-icons/paint-bucket.svg">Background Color
+                                    <img class="btn-icon" src="images-and-icons/grid-3x3.svg">Grid Line Color
                                 </div>
                                 <div id="bg-palette">
-                                    <input type="color" class="color-picker" id=gl-color-picker" value="#0000ff">
+                                    <input type="color" class="color-picker" id="gl-color-picker" value="#DBDBDB">
                                 </div>
                             </label>
                         </div>
                         <div class="grid-options">
                             <div>
-                                <form>
+                                <form onSubmit="return false;">
                                     <label for="grid-size">Grid Size</label>
-                                    <input type="text" id="grid-size" name="grid-size" placeholder="1-50" value="10">
+                                    <input type="number" id="grid-size" name="grid-size" placeholder="1-50" value="10" min="1" max="50">
                                 </form>
                             </div>
                             <div>
                                 <form>
                                     Show Grid
                                     <label class="switch" for="grid-lines">
-                                        <input type="checkbox" id="grid-lines" name="grid-lines">
+                                        <input type="checkbox" checked id="grid-lines" name="grid-lines">
                                         <span class="slider round"></span>
                                     </label>
                                 </form>
@@ -98,9 +117,9 @@
                 <div class="clear-tools">
                     <div class="tools-container">
                         <div>
-                            <button class="btn-normal">
+                            <button class="btn-normal" id="clear">
                                 <div class="btn-container">
-                                    <img class="btn-icon" src="images-and-icons/x-circle-fill.svg">Clear
+                                    <img class="btn-icon" src="images-and-icons/x-circle-fill.svg">Clear Canvas
                                 </div>
                             </button>
                         </div>
@@ -108,7 +127,7 @@
                 </div>
             </div>
             <div class="canvas-area">
-                <div id="sketch-area">
+                <div id="sketch-area" draggable="false">
                 </div>
             </div>
         </main>

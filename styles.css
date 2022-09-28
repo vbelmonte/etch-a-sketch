@@ -33,12 +33,14 @@ h3 {
 
 hr {
     color: white;
-    opacity: 0.3;
     margin: 10px 0px;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
 }
 
 button {
-    border: solid white 1px;
+    border: solid rgba(255,255,255,0.3) 1px;
     border-radius: 4px;
     background-color: transparent;
     display: flex;
@@ -73,6 +75,11 @@ button:active {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(278deg) brightness(103%) contrast(101%);
 }
 
+.btn-icon-only {
+    width: auto;
+    flex: 1;
+}
+
 .btn-normal {
     padding: 10px 14px;
 }
@@ -81,7 +88,7 @@ button:active {
     display: inline-flex;
     align-items: center;
     width: 100%;
-    border: 1px solid white;
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 4px;
     overflow: hidden;
     box-sizing: border-box;
@@ -98,6 +105,16 @@ button:active {
     -moz-box-shadow: inset 0px 0px 5px black;
     box-shadow: inset 0px 0px 5px black;
 
+}
+
+.pen-tool-btns {
+    display: flex;
+    gap: 10px;
+    width: 115px;
+}
+
+.pressedEffect {
+    background-color: rgba(255,255,255,0.3);
 }
 
 main {
@@ -138,11 +155,30 @@ main {
     margin: 10px 0px;
 }
 
+
 #grid-size {
     background-color: #1E1E1E;
     padding: 4px;
     width: 30px;
     border: solid #707070 1px;
+}
+
+#grid-size:invalid {
+    border: none;
+    outline: 2px solid red;
+    border-radius: 5px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .canvas-area {
@@ -289,7 +325,15 @@ input[type="color"]::-webkit-color-swatch {
     border: none;
 }
 
-#pen-palette, #bg-palette, #gl-palette {
+#bg-palette, #gl-palette {
     width: 35px;
     height: 35px;
+}
+
+#pen-palette {
+    width: 115px;
+    border: solid 1px rgba(255,255,255,0.3);
+    border-radius: 4px;
+    flex: 1;
+    overflow: hidden;
 }
