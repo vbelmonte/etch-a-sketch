@@ -270,7 +270,6 @@ function darken() {
 function lightenEffect(input) {
     let color = HexToHSL(input);
     let newColor = color.l + 1;
-    console.log(newColor);
 
     return 'hsl(' + color.h + ', ' + color.s + '%, ' + newColor + '%)';
 }
@@ -278,7 +277,6 @@ function lightenEffect(input) {
 function darkenEffect(input) {
     let color = HexToHSL(input);
     let newColor = color.l - 1;
-    console.log(newColor);
 
     return 'hsl(' + color.h + ', ' + color.s + '%, ' + newColor + '%)';
 }
