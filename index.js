@@ -77,6 +77,15 @@ function setGrid(entry) {
     }
 }
 
+
+
+
+/****************************
+*
+* PEN TOOL FUNCTIONS
+*
+****************************/
+
 function getPenColor() {
     penColor.addEventListener("input", function() {
         penColorValue = penColor.value;
@@ -87,9 +96,28 @@ function getPenColor() {
     return penColorValue;
 }
 
-/*function assignPenColor(value) {
-    penColor.value = value;
-}*/
+function lightenEffect(input) {
+    let color = HexToHSL(input);
+    let newColor = color.l + 1;
+
+    return 'hsl(' + color.h + ', ' + color.s + '%, ' + newColor + '%)';
+}
+
+function darkenEffect(input) {
+    let color = HexToHSL(input);
+    let newColor = color.l - 1;
+
+    return 'hsl(' + color.h + ', ' + color.s + '%, ' + newColor + '%)';
+}
+
+
+
+
+/****************************
+*
+* CANVAS TOOL FUNCTIONS
+*
+****************************/
 
 function getBackgroundColor() {
     bgColor.addEventListener("input", function() {
@@ -97,10 +125,6 @@ function getBackgroundColor() {
     });
     return bgColorValue;
 }
-
-/*function assignBackgroundColor(value) {
-    bgColor.value = value;
-}*/
 
 function getGridLineColor() {
     glColor.addEventListener("input", function() {
@@ -117,10 +141,6 @@ function assignGridLineColor() {
 
 function setInitialGridLineColor() {
     document.getElementById("sketch-area").style.backgroundColor = getGridLineColor();
-}
-
-function toggleGridLines() {
-
 }
 
 function setBackgroundColor() {
@@ -147,11 +167,13 @@ function clearCanvas() {
 }
 
 
-function printOutHSL(input) {
-    let color = HexToHSL(RGBToHex(input));
-    
-    return 'hsl(' + color.h + ', ' + color.s + '%, ' + color.l + '%)';
-}
+
+
+/***************************************
+*
+* HEX, RGB, AND HSL CONVERTER FUNCTIONS
+*
+***************************************/
 
 function HexToHSL(hex) {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -187,7 +209,6 @@ function HexToHSL(hex) {
     return {h, s, l};
 }
 
-
 function RGBToHex(rgb) {
     // Choose correct separator
     let sep = rgb.indexOf(",") > -1 ? "," : " ";
@@ -208,6 +229,13 @@ function RGBToHex(rgb) {
     return "#" + r + g + b;
 }
 
+function printOutHSL(input) {
+    let color = HexToHSL(RGBToHex(input));
+    
+    return 'hsl(' + color.h + ', ' + color.s + '%, ' + color.l + '%)';
+}
+
+
 
 
 /****************************
@@ -227,7 +255,6 @@ function getCurrentTool() {
 function pressedButton() {
     let i = 0;
     while (i < pressedButtons.length) {
-        /*pressedButtons[i].addEventListener("click", addPressedButtonListener);*/
         pressedButtons[i].addEventListener("click", function() {
             let k = 0;
             while (k < pressedButtons.length) {
@@ -267,28 +294,19 @@ function darken() {
     assignCurrentTool("darken");
 }
 
-function lightenEffect(input) {
-    let color = HexToHSL(input);
-    let newColor = color.l + 1;
-
-    return 'hsl(' + color.h + ', ' + color.s + '%, ' + newColor + '%)';
-}
-
-function darkenEffect(input) {
-    let color = HexToHSL(input);
-    let newColor = color.l - 1;
-
-    return 'hsl(' + color.h + ', ' + color.s + '%, ' + newColor + '%)';
-}
 
 
 
+/****************************************
+*
+* SKETCH AREA EVENT LISTENER FUNCTIONS
+*
+****************************************/
 
 
 function addDivEventListener(theDiv) {
     theDiv.addEventListener(/*"mousemove"*/"pointermove", function() {
         if (mouseDown) {
-            /*console.log("you clicked: div" + theDiv.id);*/
             if (getCurrentTool() === "pen") {
                 theDiv.style.backgroundColor = penColorValue;
             }
@@ -356,7 +374,6 @@ toggleGrid.addEventListener("click", function() {
         document.getElementById("sketch-area").style.gap = "0px";
     }
 });
-
 
 penTool.addEventListener("click", pen);
 eraserTool.addEventListener("click", erase);
